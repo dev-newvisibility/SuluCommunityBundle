@@ -34,7 +34,6 @@ use Symfony\Component\HttpFoundation\Request;
  *      },
  *      delete_user: bool,
  * }
- *
  * @phpstan-type Config array{
  *     from: string|string[],
  *     to: string|string[],
@@ -109,9 +108,9 @@ interface CommunityManagerInterface
      *
      * @param TConfig $property
      *
-     * @throws \InvalidArgumentException
-     *
      * @return Config[TTypeConfig]
+     *
+     * @throws \InvalidArgumentException
      */
     public function getConfigProperty(string $property);
 
@@ -124,9 +123,9 @@ interface CommunityManagerInterface
      * @param TConfig $type
      * @param TTypeConfigProperty $property
      *
-     * @throws \InvalidArgumentException
-     *
      * @return Config[TConfig][TTypeConfigProperty]
+     *
+     * @throws \InvalidArgumentException
      */
     public function getConfigTypeProperty(string $type, string $property);
 
@@ -137,8 +136,6 @@ interface CommunityManagerInterface
 
     /**
      * Save profile for given user.
-     *
-     * @return User
      */
     public function saveProfile(User $user): ?User;
 }

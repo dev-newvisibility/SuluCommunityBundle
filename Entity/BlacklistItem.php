@@ -44,10 +44,6 @@ class BlacklistItem
      */
     private $type;
 
-    /**
-     * @param string $pattern
-     * @param string $type
-     */
     public function __construct(?string $pattern = null, ?string $type = null)
     {
         $this->type = $type;

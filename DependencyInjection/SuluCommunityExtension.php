@@ -153,7 +153,7 @@ class SuluCommunityExtension extends Extension implements PrependExtensionInterf
                     'orm' => [
                         'dql' => [
                             'string_functions' => [
-                                'regexp' => RegExp::class,
+                                'regexp' => Regexp::class,
                             ],
                         ],
                     ],

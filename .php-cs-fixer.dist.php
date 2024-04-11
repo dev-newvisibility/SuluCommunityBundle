@@ -17,38 +17,33 @@ $config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
-        '@Symfony:risky' => true,
-        'ordered_imports' => true,
-        'concat_space' => ['spacing' => 'one'],
         'array_syntax' => ['syntax' => 'short'],
-        'phpdoc_align' => ['align' => 'left'],
-        'class_definition' => [
-            'multi_line_extends_each_single_line' => true,
-        ] ,
-        'linebreak_after_opening_tag' => true,
-//        'declare_strict_types' => true,
-        'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
+        'class_definition' => false,
+        'concat_space' => ['spacing' => 'one'],
+        'function_declaration' => ['closure_function_spacing' => 'none'],
+        'header_comment' => ['header' => $header],
         'native_constant_invocation' => true,
         'native_function_casing' => true,
         'native_function_invocation' => ['include' => ['@internal']],
-        'no_php4_constructor' => true,
+        'global_namespace_import' => ['import_classes' => false, 'import_constants' => false, 'import_functions' => false],
         'no_superfluous_phpdoc_tags' => ['allow_mixed' => true, 'remove_inheritdoc' => true],
-        'no_unreachable_default_argument_value' => true,
-        'no_useless_else' => true,
-        'no_useless_return' => true,
-        'php_unit_strict' => true,
-        'phpdoc_order' => true,
-        'semicolon_after_instruction' => true,
-        'strict_comparison' => true,
-        'strict_param' => true,
-        'array_indentation' => true,
-        'multiline_whitespace_before_semicolons' => true,
+        'ordered_imports' => true,
+        'phpdoc_align' => ['align' => 'left'],
+        'phpdoc_types_order' => false,
         'single_line_throw' => false,
-        'visibility_required' => ['elements' => ['property', 'method', 'const']],
+        'single_line_comment_spacing' => false,
         'phpdoc_to_comment' => [
             'ignored_tags' => ['todo', 'var'],
         ],
-        'trailing_comma_in_multiline' => ['elements' => ['arrays', /*'arguments', 'parameters' */]],
+        'phpdoc_separation' => [
+            'groups' => [
+                ['Serializer\\*', 'VirtualProperty', 'Accessor', 'Type', 'Groups', 'Expose', 'Exclude', 'SerializedName', 'Inline', 'ExclusionPolicy'],
+            ],
+        ],
+        'get_class_to_class_keyword' => false, // should be enabled as soon as support for php < 8 is dropped
+        'nullable_type_declaration_for_default_null_value' => true,
+        'no_null_property_initialization' => false,
+        'fully_qualified_strict_types' => false,
     ])
     ->setFinder($finder);
 

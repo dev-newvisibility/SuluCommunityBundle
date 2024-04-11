@@ -136,7 +136,7 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                                 ->beforeNormalization()
                                 ->ifString()
-                                    ->then(function ($value) {
+                                    ->then(function($value) {
                                         return [
                                             self::EMAIL_FROM_NAME => $value,
                                             self::EMAIL_FROM_EMAIL => $value,
@@ -151,7 +151,7 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                                 ->beforeNormalization()
                                 ->ifString()
-                                    ->then(function ($value) {
+                                    ->then(function($value) {
                                         return [
                                             self::EMAIL_TO_NAME => $value,
                                             self::EMAIL_TO_EMAIL => $value,

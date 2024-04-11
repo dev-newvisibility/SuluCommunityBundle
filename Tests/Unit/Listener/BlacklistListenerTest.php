@@ -92,7 +92,7 @@ class BlacklistListenerTest extends TestCase
 
         $this->entityManager->persist(
             Argument::that(
-                function (BlacklistUser $item) use ($user) {
+                function(BlacklistUser $item) use ($user) {
                     return '123-123-123' === $item->getToken()
                     && 'sulu-io' === $item->getWebspaceKey()
                     && $item->getUser() === $user->reveal();

@@ -34,6 +34,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
  * Provides admin-api for blacklist-items.
  *
  * @NamePrefix("sulu_community.")
+ *
  * @RouteResource("blacklist-item")
  */
 class BlacklistItemController extends AbstractRestController implements ClassResourceInterface
@@ -148,7 +149,7 @@ class BlacklistItemController extends AbstractRestController implements ClassRes
      */
     public function cdeleteAction(Request $request): Response
     {
-        $ids = \array_map(function ($id) {
+        $ids = \array_map(function($id) {
             return (int) $id;
         }, \array_filter(\explode(',', (string) $request->query->get('ids', ''))));
 

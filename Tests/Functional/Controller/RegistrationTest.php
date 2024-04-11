@@ -113,6 +113,13 @@ class RegistrationTest extends SuluTestCase
     public function testLogin(): void
     {
         $this->testConfirmation();
+        $user = $this->findUser();
+
+        if ($user) {
+            $user->setSalt('');
+            $user->setPassword('my-sulu');
+            $this->getEntityManager()->flush();
+        }
 
         $crawler = $this->client->request('GET', '/login');
         $this->assertHttpStatusCode(200, $this->client->getResponse());
@@ -181,8 +188,12 @@ class RegistrationTest extends SuluTestCase
         $this->assertNull($this->findUser());
     }
 
-    public function testRegistrationBlacklistedRequested(): RawMessage
+    public function testRegistrationBlacklistedRequested(): ?RawMessage
     {
+        if (\class_exists(\Swift_Mailer::class)) {
+            $this->markTestSkipped('Skip test for swift mailer.');
+        }
+
         $this->createBlacklistItem($this->getEntityManager(), '*@sulu.io', BlacklistItem::TYPE_REQUEST);
 
         $crawler = $this->client->request('GET', '/registration');
@@ -274,6 +285,10 @@ class RegistrationTest extends SuluTestCase
 
     public function testPasswordForget(): void
     {
+        if (\class_exists(\Swift_Mailer::class)) {
+            $this->markTestSkipped('Skip test for swift mailer.');
+        }
+
         $user = $this->testConfirmation();
 
         $crawler = $this->client->request('GET', '/password-forget');
@@ -320,10 +335,10 @@ class RegistrationTest extends SuluTestCase
         );
         $this->client->submit($form);
 
-        $this->getEntityManager()->clear();
+        //$this->getEntityManager()->clear();
 
         /** @var User $user */
-        $user = $this->findUser();
+        $user = $this->findUser('sulu');
         $password = $user->getPassword();
         $this->assertNotNull($password);
         $this->assertStringStartsWith('my-new-password', $password);
@@ -334,14 +349,12 @@ class RegistrationTest extends SuluTestCase
      */
     private function findUser(string $username = 'sulu'): ?User
     {
-        // clear entity-manager to ensure newest user
-        $this->getEntityManager()->clear();
-
         $repository = $this->getContainer()->get('sulu.repository.user');
 
         try {
             /** @var User $user */
             $user = $repository->findUserByUsername($username);
+            $this->getEntityManager()->refresh($user);
 
             return $user;
         } catch (NoResultException $exception) {

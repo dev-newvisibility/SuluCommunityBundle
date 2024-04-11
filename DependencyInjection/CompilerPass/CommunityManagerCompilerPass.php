@@ -38,7 +38,6 @@ use Symfony\Component\DependencyInjection\Reference;
  *      },
  *      delete_user: bool,
  * }
- *
  * @phpstan-type Config array{
  *     from: string|string[],
  *     to: string|string[],

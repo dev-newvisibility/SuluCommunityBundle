@@ -39,7 +39,7 @@ class BlacklistItemRepositoryTest extends SuluTestCase
         $entityManager->clear();
 
         $items = \array_map(
-            function (BlacklistItem $item) {
+            function(BlacklistItem $item) {
                 return ['pattern' => $item->getPattern(), 'type' => $item->getType()];
             },
             $repository->findBySender('test@sulu.io')

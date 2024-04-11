@@ -73,7 +73,7 @@ class RegistrationType extends AbstractType
             [
                 'data_class' => User::class,
                 'validation_groups' => ['registration'],
-                'empty_data' => function (FormInterface $form) {
+                'empty_data' => function(FormInterface $form) {
                     $user = new User();
                     $user->setContact(new Contact());
 

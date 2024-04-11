@@ -41,12 +41,25 @@ jobs:
                           SYMFONY_DEPRECATIONS_HELPER: weak
 
                     - php-version: '8.1'
-                      lint: true
+                      lint: false
                       dependency-versions: 'highest'
                       tools: 'composer:v2'
                       env:
                           SYMFONY_DEPRECATIONS_HELPER: weak
 
+                    - php-version: '8.2'
+                      lint: false
+                      dependency-versions: 'highest'
+                      tools: 'composer:v2'
+                      env:
+                          SYMFONY_DEPRECATIONS_HELPER: weak
+
+                    - php-version: '8.3'
+                      lint: true
+                      dependency-versions: 'highest'
+                      tools: 'composer:v2'
+                      env:
+                          SYMFONY_DEPRECATIONS_HELPER: weak
         services:
             mysql:
                 image: mysql:5.7
@@ -70,6 +83,11 @@ jobs:
             - name: Remove php-cs-fixer/shim package
               if: ${{ matrix.php-version == '7.2' }}
               run: composer remove php-cs-fixer/shim --dev --no-interaction
+
+            - name: Install additional lowest dependencies
+              if: ${{ matrix.dependency-versions == 'lowest' }}
+              run: |
+                  composer require symfony/swiftmailer-bundle --no-interaction --no-update
 
             - name: Install composer dependencies
               uses: ramsey/composer-install@v1

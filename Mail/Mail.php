@@ -28,8 +28,6 @@ class Mail
      *     user_template: string|null,
      *     admin_template: string|null,
      * } $config
-     *
-     * @return Mail
      */
     public static function create($from, $to, array $config): self
     {

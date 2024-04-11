@@ -1,6 +1,26 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Else branch is unreachable because previous condition is always true\\.$#"
+			count: 1
+			path: Command/InitCommand.php
+
+		-
+			message: "#^Call to method encodePassword\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\.$#"
+			count: 1
+			path: Controller/AbstractController.php
+
+		-
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:getSubscribedServices\\(\\) should return array\\<int\\|string, string\\> but returns array\\<string\\|Symfony\\\\Contracts\\\\Service\\\\Attribute\\\\SubscribedService\\>\\.$#"
+			count: 1
+			path: Controller/AbstractController.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$encoder contains unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\.$#"
+			count: 1
+			path: Controller/AbstractController.php
+
+		-
 			message: "#^Strict comparison using \\=\\=\\= between true and array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} will always evaluate to false\\.$#"
 			count: 1
 			path: Controller/BlacklistConfirmationController.php
@@ -251,6 +271,31 @@ parameters:
 			path: EventListener/MailListener.php
 
 		-
+			message: "#^Call to method createMessage\\(\\) on an unknown class Swift_Mailer\\.$#"
+			count: 1
+			path: Mail/MailFactory.php
+
+		-
+			message: "#^Call to method send\\(\\) on an unknown class Swift_Mailer\\.$#"
+			count: 1
+			path: Mail/MailFactory.php
+
+		-
+			message: "#^Class Swift_Mailer not found\\.$#"
+			count: 1
+			path: Mail/MailFactory.php
+
+		-
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\MailFactory\\:\\:__construct\\(\\) has parameter \\$mailer with no type specified\\.$#"
+			count: 1
+			path: Mail/MailFactory.php
+
+		-
+			message: "#^Property Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\MailFactory\\:\\:\\$mailer has unknown class Swift_Mailer as its type\\.$#"
+			count: 1
+			path: Mail/MailFactory.php
+
+		-
 			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManager\\:\\:getConfigProperty\\(\\) should return array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} but returns array\\<array\\|bool\\|string\\|null\\>\\|string\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
@@ -276,6 +321,11 @@ parameters:
 			path: Manager/CommunityManager.php
 
 		-
+			message: "#^Parameter \\#2 \\$firewallName of class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\Token\\\\UsernamePasswordToken constructor expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			count: 1
+			path: Manager/CommunityManager.php
+
+		-
 			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
@@ -291,7 +341,17 @@ parameters:
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\Token\\\\UsernamePasswordToken constructor expects array\\<string\\>, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^If condition is always true\\.$#"
 			count: 1
-			path: Manager/CommunityManager.php
+			path: Tests/Application/config/config.php
+
+		-
+			message: "#^Cannot call method getHtmlBody\\(\\) on Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null\\.$#"
+			count: 3
+			path: Tests/Functional/Controller/RegistrationTest.php
+
+		-
+			message: "#^Cannot call method getTo\\(\\) on Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null\\.$#"
+			count: 3
+			path: Tests/Functional/Controller/RegistrationTest.php
 
